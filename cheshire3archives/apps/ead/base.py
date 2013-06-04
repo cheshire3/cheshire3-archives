@@ -55,7 +55,7 @@ class EADWsgiApplication(object):
                                                        'eadResultSetStore')
         template_dir = resource_filename(
             Requirement.parse('cheshire3archives'),
-            'www/apps/ead/tmpl'
+            'www/ead/tmpl'
         )
         mod_dir = os.path.join(gettempdir(),
                                'mako_modules',
@@ -110,7 +110,7 @@ class EADWsgiApplication(object):
         try:
             content = resource_string(
                 Requirement.parse('cheshire3archives'),
-                'www/apps/ead/{0}'.format(path)             
+                'www/ead/{0}'.format(path)             
             )
         except IOError:
             return []
@@ -493,14 +493,14 @@ port = 25
 """.format(
    html_cache_path=resource_filename(
        Requirement.parse('cheshire3archives'),
-       'www/apps/ead/html'
+       'www/ead/html'
    )
 ))
 
 config.readfp(configDefaults, 'hard-coded')
 app_config_path = resource_filename(
     Requirement.parse('cheshire3archives'),
-    'www/apps/ead/ead.cfg'
+    'www/ead/ead.cfg'
 )
 config.read([app_config_path])
 
