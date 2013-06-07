@@ -4,10 +4,11 @@
 %>
 <%def name="format_facet(facet)">
     <%
-    idx = facet[0]
+    idx = facet[0][0]
+    name = facet[0][1]
     termHash = facet[1]
     %>
-    <span class="facethead">${idx[idx.find('.') + 1:].title()}</span>
+    <span class="facethead">${name}</span>
     <ul class="facet" id="${idx}-facet" >
     % for term, termData in termHash:
         <%
