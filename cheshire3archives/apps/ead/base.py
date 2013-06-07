@@ -92,6 +92,8 @@ class EADWsgiApplication(object):
                         req.relative_url('img').rstrip(u'/'))
         # Set the URL of the data resolver
         self.defaultContext['DATAURL'] = req.relative_url('data').rstrip(u'/')
+        # Add current Cheshire3 Session to defaultContext
+        self.defaultContext['session'] = self.session
 
     def _get_params(self):
         # Parse request parameters into a single data structure

@@ -202,7 +202,6 @@ class EADRecordWsgiApplication(EADWsgiApplication):
                 # Page 1 exists, but not requested page
                 # Return invalid page number
                 return self._render_template('fail/invalidPageNumber.html',
-                                             session=session,
                                              recid=recid,
                                              pagenum=pagenum)
             self._log(10, 'Retrieved {0} from cache'.format(path))
@@ -282,7 +281,6 @@ class EADRecordWsgiApplication(EADWsgiApplication):
             for idx, page in enumerate(pages):
                 # Template for page navigation if necessary
                 page = self._render_template('detailedPage.html',
-                                             session=session,
                                              recid=recid,
                                              page=page,
                                              pagenum=idx + 1,
@@ -306,7 +304,6 @@ class EADRecordWsgiApplication(EADWsgiApplication):
             except IndexError:
                 # Return invalid page number
                 return self._render_template('fail/invalidPageNumber.html',
-                                             session=session,
                                              recid=recid,
                                              pagenum=pagenum,
                                              maxPages=len(pages))
@@ -315,7 +312,6 @@ class EADRecordWsgiApplication(EADWsgiApplication):
             rsdata = self._fetch_mostRecentResultSet()
             rs, startRecord, maximumRecords, sortBy = rsdata
             return self._render_template('detailed.html',
-                                         session=session,
                                          recid=recid,
                                          page=page,
                                          resultSet=rs,
@@ -325,7 +321,6 @@ class EADRecordWsgiApplication(EADWsgiApplication):
                                          )
         else:
             return self._render_template('detailedWithToC.html',
-                                         session=session,
                                          recid=recid,
                                          toc=toc,
                                          page=page,
